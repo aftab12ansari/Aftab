@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Md Aftab Ansari | Android & Web Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Portfolio of Md Aftab — Android & Web Developer."
+  />
+  <!-- Google Font -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-main: #050014;
+      --bg-elevated: #120824;
+      --accent: #bb36ff;
+      --accent-soft: #ff7edb;
+      --accent-2: #4d9fff;
+      --text-main: #f7f4ff;
+      --text-muted: #a7a2c6;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 22px 80px rgba(0, 0, 0, 0.7);
+      --shadow-glow: 0 0 40px rgba(187, 54, 255, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #4e1f83 0, #050014 40%, #020009 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 0, 20, 0.95),
+        rgba(5, 0, 20, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .logo-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 30% 20%, #ff7edb, #bb36ff 40%, #4d9fff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .logo span {
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-outline {
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      font-size: 13px;
+      color: var(--text-muted);
+      background: rgba(10, 4, 25, 0.9);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--text-main);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-primary {
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      border: none;
+      font-size: 13px;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #0a0218;
+      cursor: pointer;
+      box-shadow: var(--shadow-glow);
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      filter: brightness(1.05);
+      box-shadow: 0 24px 50px rgba(187, 54, 255, 0.6);
+    }
+
+    .btn-ghost {
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      background: transparent;
+      font-size: 13px;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, background 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost span.icon {
+      font-size: 18px;
+    }
+
+    .hamburger {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: rgba(5, 0, 20, 0.9);
+    }
+
+    .hamburger span {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: #fff;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(3.5px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      transform: translateY(-3.5px) rotate(-45deg);
+    }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 8px 20px 16px;
+      background: rgba(10, 4, 25, 0.98);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-mobile a {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .nav-mobile a:hover {
+      color: var(--text-main);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow span.star {
+      font-size: 13px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 42px);
+      line-height: 1.12;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .hero-title span.name {
+      color: #ffffff;
+    }
+
+    .hero-role {
+      font-size: clamp(22px, 3vw, 26px);
+      margin-bottom: 12px;
+    }
+
+    .hero-role span.accent {
+      background: linear-gradient(120deg, var(--accent-2), var(--accent), var(--accent-soft));
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 600;
+    }
+
+    .hero-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 22px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero-socials {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-socials a {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: transform 0.15s ease, border-color 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .hero-socials a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-badges {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .pill {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+      background: rgba(10, 4, 25, 0.9);
+      color: var(--text-muted);
+    }
+
+    .pill strong {
+      color: var(--accent-soft);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      padding: 26px 22px 22px;
+      border-radius: 32px;
+      background: radial-gradient(circle at top right, #4d9fff 0, #120824 40%, #050014 100%);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255, 126, 219, 0.15), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(77, 159, 255, 0.2), transparent 55%);
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 190px;
+      aspect-ratio: 3 / 4;
+      margin: 0 auto 16px;
+      border-radius: 30px;
+      padding: 6px;
+      background: conic-gradient(from 160deg, #ff7edb, #bb36ff, #4d9fff, #ff7edb);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 26px;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 10%, #ffb6ff 0, #8240ff 35%, #1a0839 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-card h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .hero-card p.role {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .hero-card .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .hero-card .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(5, 0, 20, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-card .status {
+      margin-top: 6px;
+      font-size: 11px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    section {
+      margin-top: 60px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 26px;
+    }
+
+    .about-text {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .about-highlight {
+      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(
+        135deg,
+        rgba(187, 54, 255, 0.2),
+        rgba(5, 0, 20, 0.9)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .stat-card {
+      flex: 1 0 120px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: rgba(5, 0, 20, 0.9);
+    }
+
+    .stat-card strong {
+      font-size: 18px;
+      display: block;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .chip {
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(10, 4, 25, 0.9);
+      color: var(--text-muted);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0% 0%, #271347, #0a0218);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 16px 16px 14px;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+      border-color: rgba(187, 54, 255, 0.5);
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .project-title {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .project-tags {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .project-tags span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(5, 0, 20, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .project-links {
+      margin-top: 6px;
+      font-size: 12px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .project-links a {
+      color: var(--accent-2);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      padding: 18px 16px;
+      border-radius: var(--radius-lg);
+      background: rgba(5, 0, 20, 0.9);
+      border: 1px solid var(--border-soft);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .contact-card p + p {
+      margin-top: 10px;
+    }
+
+    .contact-list {
+      margin-top: 12px;
+      font-size: 13px;
+    }
+
+    .contact-list div {
+      margin-bottom: 8px;
+    }
+
+    .contact-list span.label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .contact-list a {
+      color: var(--accent-2);
+    }
+
+    .contact-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    input,
+    textarea {
+      margin-top: 4px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: rgba(5, 0, 20, 0.95);
+      color: var(--text-main);
+      font-size: 13px;
+      outline: none;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(187, 54, 255, 0.7);
+      box-shadow: 0 0 0 1px rgba(187, 54, 255, 0.5);
+    }
+
+    footer {
+      margin-top: 50px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 24px;
+      }
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-right {
+        display: none;
+      }
+      .hamburger {
+        display: inline-flex;
+      }
+      .nav-mobile.show {
+        display: flex;
+      }
+      .wrapper {
+        padding: 20px 16px 40px;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 28px;
+      }
+      .hero-visual {
+        order: -1;
+      }
+      .hero-card {
+        max-width: 320px;
+      }
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      section {
+        margin-top: 46px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-ghost,
+      .btn-primary {
+        justify-content: center;
+        width: 100%;
+      }
+      .hero-socials {
+        justify-content: center;
+      }
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-badge">A</div>
+        <span>Md Aftab Ansari</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <a
+          href="https://www.linkedin.com/in/md-aftab-7b1016263/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button class="btn-outline">LinkedIn</button>
+        </a>
+        <a href="#contact">
+          <button class="btn-primary">Let’s talk</button>
+        </a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="nav-mobile">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="star">✨</span> Welcome to my world
+        </div>
+        <h1 class="hero-title">
+          Hi, I’m <span class="name">Md Aftab Ansari</span>
+        </h1>
+        <div class="hero-role">
+          <span class="accent">Android &amp; Web Developer</span>
+        </div>
+        <p class="hero-text">
+          Computer Science student passionate about building modern Android and
+          web experiences. I love turning ideas into performant, beautiful apps — 
+          learning every day and shipping projects that solve real problems.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#projects">
+            <button class="btn-primary">View my projects</button>
+          </a>
+          <!-- Download CV triggers email to your real address -->
+          <a
+            href="mailto:mdaftabansari015@gmail.com?subject=Collaboration%20with%20Md%20Aftab"
+          >
+            <button class="btn-ghost">
+              <span class="icon">📎</span>
+              Download CV
+            </button>
+          </a>
+        </div>
+
+        <div class="hero-socials">
+          <span>Find me on</span>
+          <a
+            href="https://www.linkedin.com/in/md-aftab-7b1016263/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn"
+            >in</a
+          >
+          <a
+            href="https://github.com/aftab12ansari"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+            >GH</a
+          >
+          <a
+            href="https://x.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="X / Twitter"
+            >X</a
+          >
+        </div>
+
+        <div class="hero-badges">
+          <div class="pill">
+            🎓 <strong>Computer Science</strong> student
+          </div>
+          <div class="pill">
+            💜 Focused on <strong>Android &amp; Flutter</strong>
+          </div>
+          <div class="pill">
+            🚀 Always building &amp; learning
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="avatar-wrapper">
+            <div class="avatar-inner">
+              <!-- YOUR PHOTO: folder "image", file "aftab.jpg" -->
+              <img
+                src="image/aftab.jpg"
+                alt="Md Aftab Ansari portrait"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <h3>Md Aftab Ansari</h3>
+          <p class="role">Android &amp; Web Developer</p>
+          <div class="tag-row">
+            <span class="tag">Kotlin / Java</span>
+            <span class="tag">Flutter</span>
+            <span class="tag">Firebase</span>
+          </div>
+          <div class="status">Available for internships &amp; freelance work</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">About me</h2>
+        <p class="section-subtitle">Who I am</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="about-highlight">
+            I’m a Computer Science student who loves building clean,
+            user-friendly applications. From Android apps to responsive web
+            experiences, I enjoy the full process — from idea and design to code
+            and deployment.
+          </div>
+          <p>
+            My focus is on
+            <strong>Android development, modern UI, and performance</strong>.
+            I like experimenting with new libraries, polishing UI details, and
+            making sure the user experience feels smooth on any device,
+            especially on mobile.
+          </p>
+          <br />
+          <p>
+            Outside of coding, I explore new tech content, contribute to
+            projects, and learn from open-source communities. I’m always looking
+            for opportunities to collaborate and grow.
+          </p>
+        </div>
+
+        <div>
+          <div class="stats-row">
+            <div class="stat-card">
+              <strong>1+</strong>
+              <span>Years learning &amp; building</span>
+            </div>
+            <div class="stat-card">
+              <strong>5+</strong>
+              <span>Personal projects</span>
+            </div>
+            <div class="stat-card">
+              <strong>∞</strong>
+              <span>Curiosity to improve</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">Tech I work with</p>
+      </div>
+
+      <div class="skills-grid">
+        <div>
+          <h3>Mobile &amp; Frontend</h3>
+          <div class="chip-group">
+            <span class="chip">Android (Kotlin / Java)</span>
+            <span class="chip">Flutter</span>
+            <span class="chip">Jetpack Components</span>
+            <span class="chip">XML Layouts</span>
+            <span class="chip">Responsive UI</span>
+          </div>
+        </div>
+        <div>
+          <h3>Web</h3>
+          <div class="chip-group">
+            <span class="chip">HTML &amp; CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">React (Basics)</span>
+            <span class="chip">REST APIs</span>
+          </div>
+        </div>
+        <div>
+          <h3>Tools &amp; Others</h3>
+          <div class="chip-group">
+            <span class="chip">Git &amp; GitHub</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">VS Code / Android Studio</span>
+            <span class="chip">Figma (UI)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">What I’ve built</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-meta">
+            <span>Android App</span>
+            <span>2024</span>
+          </div>
+          <h3 class="project-title">Smart Task Manager</h3>
+          <p class="project-desc">
+            A modern to-do app with reminders, categories, and dark mode. Built
+            to practice clean architecture and Jetpack components.
+          </p>
+          <div class="project-tags">
+            <span>Kotlin</span>
+            <span>Room DB</span>
+            <span>MVVM</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              View on GitHub →
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span>Android / Firebase</span>
+            <span>2024</span>
+          </div>
+          <h3 class="project-title">Chat Connect</h3>
+          <p class="project-desc">
+            Real-time chat application with Firebase authentication and cloud
+            messaging. Simple, fast UI designed for mobile-first usage.
+          </p>
+          <div class="project-tags">
+            <span>Flutter</span>
+            <span>Firebase</span>
+            <span>Push Notifications</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              View on GitHub →
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span>Web</span>
+            <span>2023</span>
+          </div>
+          <h3 class="project-title">Developer Portfolio</h3>
+          <p class="project-desc">
+            A responsive personal portfolio website with smooth layout and dark
+            theme — designed to look good on both mobile and desktop.
+          </p>
+          <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              Live demo →
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">Let’s work together</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <p>
+            I’m open to internship opportunities, freelance projects, and
+            collaborations related to Android, Flutter, or web development.
+          </p>
+          <p>
+            If you have an idea or want to build something together, feel free
+            to reach out. I’ll get back to you as soon as I can.
+          </p>
+
+          <div class="contact-list">
+            <div>
+              <span class="label">Email</span>
+              <a href="mailto:mdaftabansari015@gmail.com">mdaftabansari015@gmail.com</a>
+            </div>
+            <div>
+              <span class="label">Phone</span>
+              <a href="tel:+919939232946">+91 99392 32946</a>
+            </div>
+            <div>
+              <span class="label">LinkedIn</span>
+              <a
+                href="https://www.linkedin.com/in/md-aftab-7b1016263/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >/md-aftab-7b1016263</a>
+            </div>
+            <div>
+              <span class="label">GitHub</span>
+              <a
+                href="https://github.com/aftab12ansari"
+                target="_blank"
+                rel="noopener noreferrer"
+              >github.com/aftab12ansari</a>
+            </div>
+          </div>
+
+          <p class="contact-note">
+            All contact details above are live. Feel free to share this portfolio.
+          </p>
+        </div>
+
+        <div>
+          <form id="contactForm">
+            <div>
+              <label>
+                Name
+                <input id="nameInput" type="text" placeholder="Your name" />
+              </label>
+            </div>
+            <div>
+              <label>
+                Email
+                <input id="emailInput" type="email" placeholder="you@example.com" />
+              </label>
+            </div>
+            <div>
+              <label>
+                Message
+                <textarea id="messageInput" rows="4" placeholder="Tell me about your project"></textarea>
+              </label>
+            </div>
+            <button
+              type="button"
+              id="sendMessageBtn"
+              class="btn-primary"
+              style="margin-top: 4px;"
+            >
+              Send message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© <span id="year"></span> Md Aftab. All rights reserved.</span>
+      <span>Built with 💜 using HTML, CSS &amp; JS.</span>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById("hamburger");
+    const navMobile = document.getElementById("nav-mobile");
+
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("open");
+      navMobile.classList.toggle("show");
+    });
+
+    navMobile.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("open");
+        navMobile.classList.remove("show");
+      });
+    });
+
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Contact form: send email using mailto
+    const sendMessageBtn = document.getElementById("sendMessageBtn");
+    const nameInput = document.getElementById("nameInput");
+    const emailInput = document.getElementById("emailInput");
+    const messageInput = document.getElementById("messageInput");
+
+    sendMessageBtn.addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const message = messageInput.value.trim();
+
+      const subject = encodeURIComponent(
+        `New portfolio message from ${name || "Someone"}`
+      );
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+      );
+
+      window.location.href =
+        `mailto:mdaftabansari015@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
